@@ -4,7 +4,7 @@ export type Todo = {
   completed: boolean
 }
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000'
+const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3001'
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE_URL}${path}`, {
