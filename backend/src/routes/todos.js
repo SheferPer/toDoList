@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
   res.status(201).json(todo);
 });
 
-router.put('/:id', (req, res) => {
+function updateHandler(req, res) {
   const { title, completed } = req.body;
   if (title !== undefined && typeof title !== 'string') {
     return res.status(400).json({ error: 'title must be a string' });
@@ -37,7 +37,10 @@ router.put('/:id', (req, res) => {
   const todo = store.update(Number(req.params.id), changes);
   if (!todo) return res.status(404).json({ error: 'Todo not found' });
   res.json(todo);
-});
+}
+
+router.put('/:id', updateHandler);
+router.patch('/:id', updateHandler);
 
 router.delete('/:id', (req, res) => {
   const deleted = store.remove(Number(req.params.id));

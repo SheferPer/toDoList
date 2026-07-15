@@ -3,7 +3,7 @@ import type { Todo } from '../api'
 type Props = {
   todo: Todo
   onToggle: (todo: Todo) => void
-  onDelete: (id: string) => void
+  onDelete: (id: number) => void
 }
 
 export default function TodoItem({ todo, onToggle, onDelete }: Props) {

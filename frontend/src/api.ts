@@ -1,5 +1,5 @@
 export type Todo = {
-  id: string
+  id: number
   title: string
   completed: boolean
 }
@@ -15,13 +15,13 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return res.status === 204 ? (undefined as T) : ((await res.json()) as T)
 }
 
-export const getTodos = () => request<Todo[]>('/todos')
+export const getTodos = () => request<Todo[]>('/api/todos')
 
 export const createTodo = (title: string) =>
-  request<Todo>('/todos', { method: 'POST', body: JSON.stringify({ title }) })
+  request<Todo>('/api/todos', { method: 'POST', body: JSON.stringify({ title }) })
 
-export const updateTodo = (id: string, patch: Partial<Pick<Todo, 'title' | 'completed'>>) =>
-  request<Todo>(`/todos/${id}`, { method: 'PATCH', body: JSON.stringify(patch) })
+export const updateTodo = (id: number, patch: Partial<Pick<Todo, 'title' | 'completed'>>) =>
+  request<Todo>(`/api/todos/${id}`, { method: 'PATCH', body: JSON.stringify(patch) })
 
-export const deleteTodo = (id: string) =>
-  request<void>(`/todos/${id}`, { method: 'DELETE' })
+export const deleteTodo = (id: number) =>
+  request<void>(`/api/todos/${id}`, { method: 'DELETE' })

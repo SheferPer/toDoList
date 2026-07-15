@@ -34,7 +34,7 @@ export default function App() {
       setTodos((prev) => prev.map((t) => (t.id === updated.id ? updated : t)))
     })
 
-  const remove = (id: string) =>
+  const remove = (id: number) =>
     run(async () => {
       await api.deleteTodo(id)
       setTodos((prev) => prev.filter((t) => t.id !== id))
