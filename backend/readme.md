@@ -12,7 +12,7 @@ npm install
 
 ```bash
 npm start      # production
-npm run dev    # auto-reload with nodemon
+npnpm run dev    # auto-reload with nodemon
 ```
 
 Server listens on `PORT` (default `3000`).
