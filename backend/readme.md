@@ -1,4 +1,4 @@
-# ToDoList
+# ToDoList — Backend
 
 Express server for the ToDoList app.
 
@@ -12,7 +12,7 @@ npm install
 
 ```bash
 npm start      # production
-npnpm run dev    # auto-reload with nodemon
+npm run dev    # auto-reload with nodemon
 ```
 
 Server listens on `PORT` (default `3000`).
@@ -26,7 +26,8 @@ Base path: `/api/todos`
 | GET    | `/api/todos`       | List all todos     |
 | GET    | `/api/todos/:id`   | Get a single todo  |
 | POST   | `/api/todos`       | Create a todo      |
-| PUT    | `/api/todos/:id`   | Update a todo      |
+| PUT    | `/api/todos/:id`   | Update a todo (full or partial) |
+| PATCH  | `/api/todos/:id`   | Update a todo (partial) |
 | DELETE | `/api/todos/:id`   | Delete a todo      |
 
 Request/response body:
@@ -41,4 +42,10 @@ Request/response body:
 
 `POST` requires `title` (string). `completed` defaults to `false`.
 
+Storage is in-memory — data resets whenever the server restarts.
+
 Health check: `GET /health`
+
+## CORS
+
+CORS is enabled for all origins so the [frontend](../frontend/readme.md) can call this API from its own dev server port.
